@@ -3,18 +3,19 @@ name: Deploy Frontend
 on:
   push:
     branches:
-      - main
+      - main  # Runs when changes are pushed to the main branch
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
-    steps:
+    steps: 
       - name: Checkout Repository
         uses: actions/checkout@v3
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: gh-pages
-          folder: frontend
+          branch: gh-pages  # The branch to deploy to
+          folder: frontend  # The directory to deploy (change this if needed)
+          token: ${{ secrets.GITHUB_TOKEN }}
